@@ -240,7 +240,7 @@ public class ModelResolver extends AbstractModelConverter implements ModelConver
                 }
             }
 
-            PropertyMetadata md = propDef.getMetadata();
+//            PropertyMetadata md = propDef.getMetadata();
 
             boolean hasSetter = false, hasGetter = false;
             if (propDef.getSetter() == null) {
@@ -265,9 +265,9 @@ public class ModelResolver extends AbstractModelConverter implements ModelConver
 
             if (member != null && !ignore(member, xmlAccessorTypeAnnotation, propName, propertiesToIgnore)) {
                 List<Annotation> annotationList = new ArrayList<Annotation>();
-                for (Annotation a : member.annotations()) {
-                    annotationList.add(a);
-                }
+//                for (Annotation a : member.annotations()) {
+//                    annotationList.add(a);
+//                }
 
                 annotations = annotationList.toArray(new Annotation[annotationList.size()]);
 
@@ -350,10 +350,10 @@ public class ModelResolver extends AbstractModelConverter implements ModelConver
                         property.setAccess(mp.access());
                     }
 
-                    Boolean required = md.getRequired();
-                    if (required != null) {
-                        property.setRequired(required);
-                    }
+//                    Boolean required = md.getRequired();
+//                    if (required != null) {
+//                        property.setRequired(required);
+//                    }
 
                     String description = _intr.findPropertyDescription(member);
                     if (description != null && !"".equals(description)) {
@@ -447,8 +447,9 @@ public class ModelResolver extends AbstractModelConverter implements ModelConver
                         if (PrimitiveType.fromType(propType) != null) {
                             return PrimitiveType.createProperty(propType);
                         } else {
-                            return context.resolveProperty(propType,
-                                    Iterables.toArray(propMember.annotations(), Annotation.class));
+                        	return null;
+//                            return context.resolveProperty(propType,
+//                                    Iterables.toArray(propMember.annotations(), Annotation.class));
                         }
                     }
                 }
@@ -590,23 +591,23 @@ public class ModelResolver extends AbstractModelConverter implements ModelConver
         if (annos.containsKey("javax.validation.constraints.DecimalMin")) {
             DecimalMin min = (DecimalMin) annos.get("javax.validation.constraints.DecimalMin");
             if (property instanceof AbstractNumericProperty) {
-                AbstractNumericProperty ap = (AbstractNumericProperty) property;
-                if (min.inclusive()) {
-                    ap.setMinimum(new Double(min.value()));
-                } else {
-                    ap.setExclusiveMinimum(!min.inclusive());
-                }
+//                AbstractNumericProperty ap = (AbstractNumericProperty) property;
+//                if (min.inclusive()) {
+//                    ap.setMinimum(new Double(min.value()));
+//                } else {
+//                    ap.setExclusiveMinimum(!min.inclusive());
+//                }
             }
         }
         if (annos.containsKey("javax.validation.constraints.DecimalMax")) {
             DecimalMax max = (DecimalMax) annos.get("javax.validation.constraints.DecimalMax");
             if (property instanceof AbstractNumericProperty) {
                 AbstractNumericProperty ap = (AbstractNumericProperty) property;
-                if (max.inclusive()) {
-                    ap.setMaximum(new Double(max.value()));
-                } else {
-                    ap.setExclusiveMaximum(!max.inclusive());
-                }
+//                if (max.inclusive()) {
+//                    ap.setMaximum(new Double(max.value()));
+//                } else {
+//                    ap.setExclusiveMaximum(!max.inclusive());
+//                }
             }
         }
         if (annos.containsKey("javax.validation.constraints.Pattern")) {

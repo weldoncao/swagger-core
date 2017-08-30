@@ -172,7 +172,8 @@ public class ParameterProcessor {
                 bp.setAccess(param.getAccess());
             }
 
-            final Property property = ModelConverters.getInstance().readAsProperty(type);
+            ModelConverters modelConverters = ModelConverters.getInstance();
+            final Property property = modelConverters.readAsProperty(type);
             if (property != null) {
                 final Map<PropertyBuilder.PropertyId, Object> args = new EnumMap<PropertyBuilder.PropertyId, Object>(PropertyBuilder.PropertyId.class);
                 if (StringUtils.isNotEmpty(defaultValue)) {

@@ -46,7 +46,6 @@ public class SwaggerAnnotationIntrospector extends AnnotationIntrospector {
         return null;
     }
 
-    @Override
     public String findPropertyDescription(Annotated a) {
         ApiModel model = a.getAnnotation(ApiModel.class);
         if (model != null && !"".equals(model.description())) {
@@ -59,7 +58,6 @@ public class SwaggerAnnotationIntrospector extends AnnotationIntrospector {
         return null;
     }
 
-    @Override
     public Integer findPropertyIndex(Annotated a) {
         ApiModelProperty prop = a.getAnnotation(ApiModelProperty.class);
         if (prop != null && prop.position() != 0) {

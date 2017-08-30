@@ -138,29 +138,29 @@ public class DefaultParameterExtension extends AbstractSwaggerExtension {
                 Type paramType = null;
 
                 // Gather the field's details
-                if (field != null) {
-                    paramType = field.getGenericType();
-
-                    for (final Annotation fieldAnnotation : field.annotations()) {
-                        if (!paramAnnotations.contains(fieldAnnotation)) {
-                            paramAnnotations.add(fieldAnnotation);
-                        }
-                    }
-                }
-
-                // Gather the setter's details but only the ones we need
-                if (setter != null) {
-                    // Do not set the param class/type from the setter if the values are already identified
-                    if (paramType == null) {
-                        paramType = setter.getGenericParameterTypes() != null ? setter.getGenericParameterTypes()[0] : null;
-                    }
-
-                    for (final Annotation fieldAnnotation : setter.annotations()) {
-                        if (!paramAnnotations.contains(fieldAnnotation)) {
-                            paramAnnotations.add(fieldAnnotation);
-                        }
-                    }
-                }
+//                if (field != null) {
+//                    paramType = field.getGenericType();
+//
+//                    for (final Annotation fieldAnnotation : field.annotations()) {
+//                        if (!paramAnnotations.contains(fieldAnnotation)) {
+//                            paramAnnotations.add(fieldAnnotation);
+//                        }
+//                    }
+//                }
+//
+//                // Gather the setter's details but only the ones we need
+//                if (setter != null) {
+//                    // Do not set the param class/type from the setter if the values are already identified
+//                    if (paramType == null) {
+//                        paramType = setter.getGenericParameterTypes() != null ? setter.getGenericParameterTypes()[0] : null;
+//                    }
+//
+//                    for (final Annotation fieldAnnotation : setter.annotations()) {
+//                        if (!paramAnnotations.contains(fieldAnnotation)) {
+//                            paramAnnotations.add(fieldAnnotation);
+//                        }
+//                    }
+//                }
 
                 if (paramType == null) {
                     continue;
